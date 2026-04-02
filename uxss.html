@@ -9,7 +9,7 @@
   console.log(window.testJsProxy.danger())
   }`;
   const base64 = btoa(payload);
-  for(let i=0; i<100; i++){
+  for(let i=0; i<1000; i++){
   setTimeout(function(){
   if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
     console.log(111111)
