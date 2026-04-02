@@ -11,7 +11,7 @@
   for(let i=0; i<1000; i++){
   setTimeout(function(){
   if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
-    window.testJsProxy.danger(`console.log(location.href)`);
+    window.testJsProxy.danger(location.href);
     
   }},i)}
   location.href = url;
