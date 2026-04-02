@@ -11,6 +11,7 @@ hello world!
   for(let i=0; i<100; i++){
   setTimeout(function(){
   if(window.testJsProxy && typeof window.testJsProxy.test === "function"){
+    console.log(111111)
   eval(atob("${base64}"));
   }},i)}
   location.href = url;
