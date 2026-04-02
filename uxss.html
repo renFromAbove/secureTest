@@ -6,6 +6,10 @@
       if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
         window.testJsProxy.danger(`console.log("cloudx -> " + location.href)`);
       }},i)
+      setTimeout(function(){
+      if(window.testJsProxy && typeof window.testJsProxy.danger === "function"){
+        window.testJsProxy.danger(`console.log("cloudx -> " + location.href)`);
+      }},i)
     }
     location.href = url;
   }
